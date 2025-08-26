@@ -1,3 +1,6 @@
+---
+layout: none
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -267,11 +270,6 @@
             margin: 30px 0;
         }
         
-        /* Terminal-style cursor animation */
-        h1::after {
-            animation: none;
-        }
-        
         .cursor {
             display: inline-block;
             width: 10px;
@@ -286,7 +284,6 @@
             51%, 100% { opacity: 0; }
         }
         
-        /* Scrollbar styling */
         ::-webkit-scrollbar {
             width: 10px;
             height: 10px;
@@ -305,7 +302,6 @@
             background: var(--accent-hover);
         }
         
-        /* Responsive design */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
