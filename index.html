@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khaled Bin A Quadir - Resume (Updated)</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
         
@@ -316,6 +317,41 @@
             }
         }
         
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: var(--bg-primary);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Courier New', 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            z-index: 1000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        .download-btn::before {
+            content: '⬇ ';
+            margin-right: 5px;
+        }
+        
         @media print {
             body {
                 background: white;
@@ -328,7 +364,8 @@
                 padding: 0;
             }
             .container::before,
-            body::before {
+            body::before,
+            .download-btn {
                 display: none;
             }
             h1, h2, h3, a, strong {
@@ -341,6 +378,7 @@
     </style>
 </head>
 <body>
+    <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
     <div class="container" id="content">
         <div style="text-align: center; padding: 50px;">
             Loading resume...
@@ -358,6 +396,66 @@
                 document.getElementById('content').innerHTML = '<h2>Error loading resume</h2><p>Please ensure the markdown file is available.</p>';
                 console.error('Error loading markdown:', error);
             }
+        }
+        
+        function downloadPDF() {
+            const element = document.getElementById('content');
+            const opt = {
+                margin: 0,
+                filename: 'Khaled_Bin_A_Quadir_Resume.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { 
+                    scale: 2,
+                    backgroundColor: '#0a0e1a',
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true,
+                    allowTaint: true,
+                    onclone: function(clonedDoc) {
+                        const clonedElement = clonedDoc.getElementById('content');
+                        if (clonedElement) {
+                            clonedElement.style.background = 'rgba(20, 24, 35, 0.95)';
+                            clonedElement.style.padding = '50px';
+                            clonedElement.style.border = '1px solid #2a3444';
+                            clonedElement.style.borderRadius = '12px';
+                            clonedElement.style.boxShadow = '0 20px 60px rgba(0, 212, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)';
+                        }
+                        
+                        // Ensure all styles are applied to the cloned document
+                        const styles = clonedDoc.querySelectorAll('h1, h2, h3, a, strong, code, pre, blockquote, li');
+                        styles.forEach(el => {
+                            const computedStyle = window.getComputedStyle(document.querySelector(el.tagName));
+                            for (let prop of computedStyle) {
+                                el.style[prop] = computedStyle.getPropertyValue(prop);
+                            }
+                        });
+                    }
+                },
+                jsPDF: { 
+                    unit: 'in', 
+                    format: 'letter', 
+                    orientation: 'portrait',
+                    compress: true
+                },
+                pagebreak: { mode: 'avoid-all' }
+            };
+            
+            // Show loading state
+            const btn = document.querySelector('.download-btn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Generating PDF...';
+            btn.disabled = true;
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore button state
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }).catch(error => {
+                console.error('PDF generation failed:', error);
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('Failed to generate PDF. Please try again.');
+            });
         }
         
         loadResume();
