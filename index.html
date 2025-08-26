@@ -316,31 +316,219 @@
             }
         }
         
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+            z-index: 1000;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .download-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+        }
+        
+        .download-btn::before {
+            content: '↓ ';
+        }
+        
         @media print {
+            @page {
+                size: letter;
+                margin: 0.5in;
+            }
+            
             body {
-                background: white;
-                color: black;
+                background: white !important;
+                color: #000 !important;
+                font-family: 'Courier New', monospace !important;
+                line-height: 1.5 !important;
+                font-size: 11pt !important;
             }
-            .container {
-                box-shadow: none;
-                border: none;
-                background: white;
-                padding: 0;
-            }
-            .container::before,
+            
             body::before {
-                display: none;
+                display: none !important;
             }
-            h1, h2, h3, a, strong {
-                color: black !important;
+            
+            .download-btn {
+                display: none !important;
             }
-            h1::before, h2::before, h3::before {
-                display: none;
+            
+            .container {
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: white !important;
+                border: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            
+            .container::before {
+                display: none !important;
+            }
+            
+            h1 {
+                color: #000 !important;
+                font-size: 20pt !important;
+                margin-bottom: 12pt !important;
+                padding-bottom: 6pt !important;
+                border-bottom: 2pt solid #000 !important;
+                page-break-after: avoid !important;
+                letter-spacing: normal !important;
+                text-transform: none !important;
+            }
+            
+            h1::before, h1::after {
+                display: none !important;
+            }
+            
+            h2 {
+                color: #000 !important;
+                font-size: 14pt !important;
+                margin-top: 16pt !important;
+                margin-bottom: 8pt !important;
+                padding-bottom: 4pt !important;
+                border-bottom: 1pt solid #333 !important;
+                page-break-after: avoid !important;
+            }
+            
+            h2::before {
+                display: none !important;
+            }
+            
+            h3 {
+                color: #000 !important;
+                font-size: 12pt !important;
+                margin-top: 12pt !important;
+                margin-bottom: 6pt !important;
+                page-break-after: avoid !important;
+            }
+            
+            h3::before {
+                display: none !important;
+            }
+            
+            p {
+                color: #000 !important;
+                margin-bottom: 8pt !important;
+                text-align: left !important;
+                orphans: 3 !important;
+                widows: 3 !important;
+            }
+            
+            ul, ol {
+                color: #000 !important;
+                margin: 8pt 0 !important;
+                padding-left: 20pt !important;
+                page-break-inside: avoid !important;
+            }
+            
+            li {
+                color: #000 !important;
+                margin-bottom: 4pt !important;
+                page-break-inside: avoid !important;
+            }
+            
+            ul li::before {
+                content: '• ' !important;
+                color: #000 !important;
+                position: relative !important;
+                left: 0 !important;
+            }
+            
+            a {
+                color: #000 !important;
+                text-decoration: underline !important;
+                font-weight: normal !important;
+            }
+            
+            a::after {
+                display: none !important;
+            }
+            
+            strong {
+                color: #000 !important;
+                font-weight: bold !important;
+            }
+            
+            em {
+                color: #000 !important;
+            }
+            
+            code {
+                background: #f0f0f0 !important;
+                color: #000 !important;
+                padding: 1pt 3pt !important;
+                border: 1pt solid #ccc !important;
+                border-radius: 2pt !important;
+                font-family: 'Courier New', monospace !important;
+                font-size: 10pt !important;
+            }
+            
+            pre {
+                background: #f5f5f5 !important;
+                border: 1pt solid #ccc !important;
+                border-radius: 0 !important;
+                padding: 8pt !important;
+                margin: 8pt 0 !important;
+                page-break-inside: avoid !important;
+            }
+            
+            pre::before {
+                display: none !important;
+            }
+            
+            pre code {
+                background: none !important;
+                border: none !important;
+                padding: 0 !important;
+                color: #000 !important;
+            }
+            
+            blockquote {
+                border-left: 3pt solid #666 !important;
+                padding: 6pt 12pt !important;
+                margin: 8pt 0 !important;
+                background: #f9f9f9 !important;
+                color: #333 !important;
+                page-break-inside: avoid !important;
+            }
+            
+            hr {
+                border: none !important;
+                height: 1pt !important;
+                background: #ccc !important;
+                margin: 12pt 0 !important;
+            }
+            
+            .cursor {
+                display: none !important;
+            }
+            
+            * {
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
 </head>
 <body>
+    <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
     <div class="container" id="content">
         <div style="text-align: center; padding: 50px;">
             Loading resume...
@@ -358,6 +546,18 @@
                 document.getElementById('content').innerHTML = '<h2>Error loading resume</h2><p>Please ensure the markdown file is available.</p>';
                 console.error('Error loading markdown:', error);
             }
+        }
+        
+        function downloadPDF() {
+            // Open print dialog - user can save as PDF from there
+            window.print();
+            
+            // Show instructions for better UX
+            setTimeout(() => {
+                if (!window.matchMedia('print').matches) {
+                    console.log('To save as PDF: Choose "Save as PDF" from the print destination dropdown');
+                }
+            }, 100);
         }
         
         loadResume();
