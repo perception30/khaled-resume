@@ -7,29 +7,20 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-          
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout --orphan gh-pages-temp
+          git rm -rf .github
+          git add -A
+          git commit -m "Deploy to GitHub Pages"
+          git push origin gh-pages-temp:gh-pages --force
+          echo "✅ Deployed successfully!"
