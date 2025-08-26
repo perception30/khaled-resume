@@ -6,80 +6,343 @@
     <title>Khaled Bin A Quadir - Resume</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141823;
+            --text-primary: #e8eaed;
+            --text-secondary: #8b92a4;
+            --accent: #00d4ff;
+            --accent-hover: #00a8cc;
+            --border: #2a3444;
+            --code-bg: #1a1f2e;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            font-family: 'Courier New', 'JetBrains Mono', monospace;
+            line-height: 1.7;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            position: relative;
         }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 212, 255, 0.03) 2px,
+                    rgba(0, 212, 255, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
         .container {
-            background-color: white;
-            padding: 40px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: rgba(20, 24, 35, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 
+                0 20px 60px rgba(0, 212, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 2;
         }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent), transparent, var(--accent));
+            border-radius: 12px;
+            opacity: 0.1;
+            z-index: -1;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.2; }
+        }
+        
         h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 20px;
         }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+        
+        h1::before {
+            content: '> ';
+            color: var(--success);
+            font-weight: 400;
+        }
+        
         h2 {
-            color: #34495e;
-            margin-top: 30px;
-            border-bottom: 1px solid #ecf0f1;
-            padding-bottom: 5px;
+            font-size: 1.6em;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 35px;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
         }
+        
+        h2::before {
+            content: '## ';
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
         h3 {
-            color: #7f8c8d;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 25px;
+            margin-bottom: 15px;
         }
+        
+        h3::before {
+            content: '### ';
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            text-align: justify;
+        }
+        
         a {
-            color: #3498db;
+            color: var(--accent);
             text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+            font-weight: 600;
         }
+        
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
         a:hover {
-            text-decoration: underline;
+            color: var(--accent-hover);
         }
-        ul {
-            padding-left: 20px;
+        
+        a:hover::after {
+            width: 100%;
         }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
         li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            position: relative;
         }
+        
+        ul li::before {
+            content: '▸';
+            color: var(--accent);
+            position: absolute;
+            left: -20px;
+            font-weight: bold;
+        }
+        
+        ul li::marker {
+            content: '';
+        }
+        
         code {
-            background-color: #f4f4f4;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-size: 0.9em;
+            background: var(--code-bg);
+            color: var(--accent);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            border: 1px solid var(--border);
         }
+        
         pre {
-            background-color: #f4f4f4;
-            padding: 15px;
-            border-radius: 5px;
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
             overflow-x: auto;
+            margin: 20px 0;
+            position: relative;
         }
+        
+        pre::before {
+            content: 'CODE';
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.7em;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+        }
+        
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+            color: var(--text-primary);
+        }
+        
         blockquote {
-            border-left: 4px solid #3498db;
-            padding-left: 15px;
-            margin-left: 0;
-            color: #555;
+            border-left: 4px solid var(--accent);
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--text-secondary);
         }
+        
+        strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        em {
+            color: var(--text-primary);
+            font-style: italic;
+        }
+        
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 30px 0;
+        }
+        
+        /* Terminal-style cursor animation */
+        h1::after {
+            animation: none;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: var(--accent);
+            animation: blink 1s infinite;
+            margin-left: 3px;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-hover);
+        }
+        
+        /* Responsive design */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
             }
             .container {
-                padding: 20px;
+                padding: 30px 20px;
+                margin: 20px auto;
+            }
+            h1 {
+                font-size: 1.8em;
+                letter-spacing: 1px;
+            }
+            h2 {
+                font-size: 1.3em;
             }
         }
+        
         @media print {
             body {
-                background-color: white;
+                background: white;
+                color: black;
             }
             .container {
                 box-shadow: none;
+                border: none;
+                background: white;
                 padding: 0;
+            }
+            .container::before,
+            body::before {
+                display: none;
+            }
+            h1, h2, h3, a, strong {
+                color: black !important;
+            }
+            h1::before, h2::before, h3::before {
+                display: none;
             }
         }
     </style>
