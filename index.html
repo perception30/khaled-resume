@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khaled Bin A Quadir - Resume (Updated)</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
         
@@ -346,6 +348,125 @@
             content: '↓ ';
         }
         
+        /* PDF Generation Specific Styles */
+        #pdf-content {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 794px; /* A4 width at 96 DPI */
+            background: white;
+            color: #000;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            padding: 60px;
+        }
+        
+        #pdf-content * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        #pdf-content h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #000;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        
+        #pdf-content h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 1.5px solid #333;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        #pdf-content h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            color: #222;
+        }
+        
+        #pdf-content p {
+            margin-bottom: 14px;
+            text-align: justify;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        
+        #pdf-content ul {
+            margin: 14px 0;
+            padding-left: 30px;
+        }
+        
+        #pdf-content li {
+            margin-bottom: 8px;
+            font-size: 13px;
+            list-style-type: disc;
+            line-height: 1.6;
+        }
+        
+        #pdf-content strong {
+            font-weight: bold;
+            color: #000;
+        }
+        
+        #pdf-content em {
+            font-style: italic;
+        }
+        
+        #pdf-content a {
+            color: #000;
+            text-decoration: underline;
+        }
+        
+        #pdf-content code {
+            background: #f5f5f5;
+            padding: 3px 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        
+        #pdf-content pre {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 12px;
+            margin: 14px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            overflow-x: auto;
+            line-height: 1.4;
+        }
+        
+        #pdf-content blockquote {
+            border-left: 4px solid #666;
+            padding: 10px 18px;
+            margin: 14px 0;
+            background: #f9f9f9;
+            font-style: italic;
+            color: #444;
+            font-size: 13px;
+        }
+        
+        #pdf-content hr {
+            border: none;
+            height: 1px;
+            background: #ccc;
+            margin: 24px 0;
+        }
+        
         @media print {
             @page {
                 size: letter;
@@ -662,29 +783,105 @@
         </div>
     </div>
     
+    <!-- Hidden container for PDF generation -->
+    <div id="pdf-content"></div>
+    
     <script>
+        let resumeMarkdown = '';
+        
         async function loadResume() {
             try {
                 const response = await fetch('Resume of Khaled Bin A Quadir.md');
-                const markdown = await response.text();
-                const html = marked.parse(markdown);
+                resumeMarkdown = await response.text();
+                const html = marked.parse(resumeMarkdown);
+                
+                // Load into visible container
                 document.getElementById('content').innerHTML = html;
+                
+                // Also prepare PDF container with clean HTML
+                document.getElementById('pdf-content').innerHTML = html;
             } catch (error) {
                 document.getElementById('content').innerHTML = '<h2>Error loading resume</h2><p>Please ensure the markdown file is available.</p>';
                 console.error('Error loading markdown:', error);
             }
         }
         
-        function downloadPDF() {
-            // Open print dialog - user can save as PDF from there
-            window.print();
+        async function downloadPDF() {
+            const button = document.querySelector('.download-btn');
+            const originalText = button.textContent;
             
-            // Show instructions for better UX
-            setTimeout(() => {
-                if (!window.matchMedia('print').matches) {
-                    console.log('To save as PDF: Choose "Save as PDF" from the print destination dropdown');
+            try {
+                // Update button to show loading
+                button.textContent = 'Generating PDF...';
+                button.disabled = true;
+                
+                // Get the PDF content element
+                const element = document.getElementById('pdf-content');
+                
+                // Temporarily show it for rendering
+                element.style.position = 'fixed';
+                element.style.left = '0';
+                element.style.top = '0';
+                element.style.zIndex = '-1';
+                
+                // Wait for rendering
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
+                // Use html2canvas to capture the content
+                const canvas = await html2canvas(element, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#ffffff',
+                    windowWidth: 794, // A4 width in pixels at 96 DPI
+                    windowHeight: 1123, // A4 height in pixels at 96 DPI
+                });
+                
+                // Hide the element again
+                element.style.position = 'absolute';
+                element.style.left = '-9999px';
+                element.style.top = '-9999px';
+                
+                // Initialize jsPDF
+                const { jsPDF } = window.jspdf;
+                
+                // Calculate dimensions for A4
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                let position = 0;
+                
+                // Add the first page
+                const imgData = canvas.toDataURL('image/jpeg', 1.0);
+                pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                // Add additional pages if needed
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
                 }
-            }, 100);
+                
+                // Save the PDF
+                pdf.save('Khaled_Bin_A_Quadir_Resume.pdf');
+                
+                // Restore button
+                button.textContent = originalText;
+                button.disabled = false;
+                
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+                
+                // Restore button
+                button.textContent = originalText;
+                button.disabled = false;
+            }
         }
         
         loadResume();
