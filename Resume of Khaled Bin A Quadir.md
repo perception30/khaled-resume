@@ -2,7 +2,8 @@
 
 * **Phone:** \+61 421 930 895  
 * **Email:** perception30@gmail.com  
-* **LinkedIn:** [linkedin.com/in/khaledquadir](https://linkedin.com/in/khaledquadir/)
+* **LinkedIn:** [linkedin.com/in/khaledquadir](https://linkedin.com/in/khaledquadir/)  
+* **Online Resume:** [perception30.github.io/khaled-resume](https://perception30.github.io/khaled-resume)
 
 ## PROFESSIONAL SUMMARY
 
