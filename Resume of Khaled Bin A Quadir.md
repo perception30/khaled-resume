@@ -1,10 +1,10 @@
-KHALED BIN A QUADIR
+# KHALED BIN A QUADIR
 
 * **Phone:** \+61 421 930 895  
 * **Email:** perception30@gmail.com  
 * **LinkedIn:** [linkedin.com/in/khaledquadir](https://linkedin.com/in/khaledquadir/)
 
-PROFESSIONAL SUMMARY
+## PROFESSIONAL SUMMARY
 
 Seasoned Full-Stack Engineering Leader with 15+ years of expertise driving enterprise-scale digital transformations. Proven track record of:
 
@@ -17,9 +17,9 @@ Seasoned Full-Stack Engineering Leader with 15+ years of expertise driving enter
 
 Technical authority in cloud-native architectures, distributed systems, and modern development stacks (TypeScript / Node / Go / Python / Java / AWS / Azure / React / Docker / Kubernetes / Kafka). Known for translating complex business requirements into elegant, scalable solutions while fostering engineering excellence and mentoring future leaders.
 
-PROFESSIONAL SKILLS
+## PROFESSIONAL SKILLS
 
-Cloud & Infrastructure
+### Cloud & Infrastructure
 
 * **Cloud Platforms:** AWS (ECS, EKS, Lambda, S3, CloudFront, Route53), Azure (AKS, Functions, App Service), GCP  
 * **Infrastructure as Code:** Terraform, CloudFormation, Pulumi, AWS CDK  
@@ -28,7 +28,7 @@ Cloud & Infrastructure
 * **Service Mesh:** Istio, Consul, AWS App Mesh, Azure Service Fabric  
 * **Serverless:** AWS Lambda, Azure Functions, Cloud Run, Knative, OpenFaaS
 
-Programming & Development
+### Programming & Development
 
 * **Languages:** TypeScript, JavaScript, Python, Golang, Java, Rust, C++  
 * **Backend:** Node.js, Deno, Express, NestJS, Django, Spring Boot, Gin, Echo  
@@ -36,7 +36,7 @@ Programming & Development
 * **Mobile & Desktop:** React Native, Flutter, Electron, Progressive Web Apps  
 * **API Design:** REST, GraphQL, gRPC, Protocol Buffers, OpenAPI, AsyncAPI
 
-Data & Storage
+### Data & Storage
 
 * **Databases:**  
   * **Relational:** PostgreSQL, MySQL, Aurora, CockroachDB  
@@ -47,7 +47,7 @@ Data & Storage
 * **Message Queues:** Kafka, RabbitMQ, AWS SQS/SNS, Azure Service Bus  
 * **Data Processing:** Apache Spark, Flink, Hadoop, AWS EMR
 
-DevOps & SRE
+### DevOps & SRE
 
 * **CI/CD:** GitHub Actions, Azure DevOps, Jenkins, Bitbucket Pipelines, Travis CI  
 * **Monitoring & Observability:**  
@@ -57,30 +57,30 @@ DevOps & SRE
   * **APM:** AppDynamics, Dynatrace  
 * **Testing:** Jest, Cypress, Pytest, Postman, Newman, Mocha, Chai, JUnit
 
-Security & Compliance
+### Security & Compliance
 
 * **Identity:** OAuth2, OIDC, SAML, Keycloak, Auth0, AWS Cognito  
 * **Security Tools:** Vault, CertManager, AWS KMS, Azure Key Vault  
 * **Compliance:** SOC2, ISO27001, GDPR, PCI-DSS  
 * **Security Practices:** DevSecOps, SAST/DAST, Container Security
 
-Modern Architecture Patterns
+### Modern Architecture Patterns
 
 * **Design:** Microservices, Event-Driven, CQRS, Event Sourcing  
 * **Reliability:** Circuit Breaking, Rate Limiting, Bulkheading  
 * **Scalability:** Auto-scaling, Load Balancing, Caching Strategies  
 * **Development:** TDD, BDD, DDD, Clean Architecture, Hexagonal Architecture
 
-Emerging Technologies
+### Emerging Technologies
 
 * **AI/ML:** TensorFlow, PyTorch, Scikit-learn, Hugging Face  
 * **Blockchain:** Ethereum, Solidity, Web3.js, Smart Contracts  
 * **Edge Computing:** CloudFlare Workers, AWS Lambda@Edge  
 * **FinOps:** AWS Cost Explorer, Azure Cost Management, Kubecost,
 
-PROFESSIONAL EXPERIENCE
+## PROFESSIONAL EXPERIENCE
 
-FS Soft | Sydney, AU | Apr 2023 \- Present \[Contract\]
+### FS Soft | Sydney, AU | Apr 2023 - Present [Contract]
 
 **Lead Software Engineer (Full Stack, Cloud, DevOps)**
 
@@ -104,7 +104,7 @@ FS Soft | Sydney, AU | Apr 2023 \- Present \[Contract\]
   * Mentoring junior developers and conducting technical reviews  
   * Improving team velocity by 35% through process optimization
 
-Optus | Sydney, AU | Oct 2023 \- April 2023 \[Contract\]
+### Optus | Sydney, AU | Oct 2023 - April 2023 [Contract]
 
 **Lead / Senior Consultant (Full Stack, Cloud Engineering)**
 
@@ -132,7 +132,7 @@ Optus | Sydney, AU | Oct 2023 \- April 2023 \[Contract\]
   * Reduced PR review time by 40% through automated checks  
   * Achieved 35% faster feature deployment through CI/CD optimization
 
-Transport for NSW | Sydney, AU | Apr 2023 \- Oct 2023 \[Contract\]
+### Transport for NSW | Sydney, AU | Apr 2023 - Oct 2023 [Contract]
 
 **Full-Stack Software Engineer (Frontend, Backend) / Senior Consultant (Full Stack, Cloud Engineering)**
 
@@ -165,7 +165,7 @@ Transport for NSW | Sydney, AU | Apr 2023 \- Oct 2023 \[Contract\]
   * Established code review guidelines and best practices  
   * Increased team velocity by 40% through knowledge sharing and pair programming
 
-Atlassian | Sydney, AU | Sep 2022 \- Apr 2023 \[Contract\]
+### Atlassian | Sydney, AU | Sep 2022 - Apr 2023 [Contract]
 
 **Senior Consultant (Full Stack, Cloud Engineering)**
 
@@ -199,7 +199,7 @@ Atlassian | Sydney, AU | Sep 2022 \- Apr 2023 \[Contract\]
   * Reduced PR review time by 50% through automated checks  
   * Led architecture design reviews and technical discussions
 
-ThoughtWorks | Sydney, AU | Apr 2022 \- Sep 2022 \[Contract\]
+### ThoughtWorks | Sydney, AU | Apr 2022 - Sep 2022 [Contract]
 
 **Senior Consultant (Full Stack, Cloud Engineering)**
 
@@ -212,7 +212,7 @@ ThoughtWorks | Sydney, AU | Apr 2022 \- Sep 2022 \[Contract\]
 * Established CI/CD pipelines using GitHub Actions and AWS CodePipeline, reducing deployment time by 60%  
 * Implemented comprehensive monitoring and alerting using Datadog and PagerDuty, achieving 99.99% system uptime
 
-Flight Centre Travel Group | Sydney, AU | May 2021 \- Apr 2022 \[Contract\]
+### Flight Centre Travel Group | Sydney, AU | May 2021 - Apr 2022 [Contract]
 
 **Senior Consultant (Full-Stack, Cloud Infrastructure)**
 
@@ -226,7 +226,7 @@ Flight Centre Travel Group | Sydney, AU | May 2021 \- Apr 2022 \[Contract\]
 * Established monitoring and observability using Datadog and ELK stack, achieving 99.9% system reliability  
 * Led a team of 8 engineers, introducing modern DevOps practices that increased deployment frequency by 300%
 
-Lendi (lendi.com.au) | Sydney, AU | June 2019 \- May 2021 \[Full-Time\]
+### Lendi (lendi.com.au) | Sydney, AU | June 2019 - May 2021 [Full-Time]
 
 **Senior Cloud Engineer (Backend, Cloud Team)**
 
@@ -241,7 +241,7 @@ Lendi (lendi.com.au) | Sydney, AU | June 2019 \- May 2021 \[Full-Time\]
 * Created automated testing frameworks achieving 90% code coverage, reducing production incidents by 70%  
 * Mentored junior developers and conducted technical design reviews, improving team velocity by 40%
 
-Silicon Labs (Silabs.com) | Sydney, AU | April 2018 \- June 2019 \[Full-Time\]
+### Silicon Labs (Silabs.com) | Sydney, AU | April 2018 - June 2019 [Full-Time]
 
 **Senior Software Engineer (Full-Stack, Cloud)**
 
@@ -256,7 +256,7 @@ Silicon Labs (Silabs.com) | Sydney, AU | April 2018 \- June 2019 \[Full-Time\]
 * Optimized cloud infrastructure costs through auto-scaling and resource optimization, achieving 40% cost reduction  
 * Collaborated with hardware teams to implement efficient protocols for low-power IoT devices, extending battery life by 30%
 
-SK Systems | Remote | Dec 2015 \- March 2018 \[Full-Time\]
+### SK Systems | Remote | Dec 2015 - March 2018 [Full-Time]
 
 **Lead Consultant (Backend & Cloud)**
 
@@ -271,7 +271,7 @@ SK Systems | Remote | Dec 2015 \- March 2018 \[Full-Time\]
 * Created developer documentation and API specifications that reduced onboarding time from weeks to days  
 * Led security improvements including OAuth2 implementation and encryption at rest/transit, achieving SOC2 compliance
 
-SK Systems | Jan 2012 \- Dec 2015 \[Full-Time\]
+### SK Systems | Jan 2012 - Dec 2015 [Full-Time]
 
 **Full Stack Senior Software Engineering Consultant**
 
@@ -286,7 +286,7 @@ SK Systems | Jan 2012 \- Dec 2015 \[Full-Time\]
 * Optimized MySQL database queries and implemented sharding strategies, resulting in 70% faster query execution  
 * Integrated payment gateways and third-party services, processing $10M+ in annual transactions with 99.99% success rate
 
-Freelance Software Developer (Elance, ODesk) | Jan 2007 \- Dec 2011 \[Contract\]
+### Freelance Software Developer (Elance, ODesk) | Jan 2007 - Dec 2011 [Contract]
 
 **Full Stack Developer & Technical Consultant**
 
@@ -305,9 +305,9 @@ Freelance Software Developer (Elance, ODesk) | Jan 2007 \- Dec 2011 \[Contract\]
 * Technologies used: PHP (Laravel, Zend), Java, Python, JavaScript, jQuery, MySQL, PostgreSQL, HTML5, CSS3, WordPress, Drupal  
 * Achieved "Top Rated" status on both platforms with 90%+ job success score
 
-EDUCATION
+## EDUCATION
 
-Master of Information Technology, Major in Software Design and Development
+### Master of Information Technology, Major in Software Design and Development
 
 **Charles Sturt University | 2016 \- 2018 (Australia)**
 
@@ -329,16 +329,16 @@ Master of Information Technology, Major in Software Design and Development
   * Faculty Merit Award for Outstanding Academic Performance  
   * Selected for Industry Partnership Program with a leading tech company
 
-Bachelor of URP
+### Bachelor of URP
 
 **Bangladesh University of Engineering and Technology | 2008 \- 2012**
 
-CERTIFICATIONS
+## CERTIFICATIONS
 
 * **AWS Certified Solutions Architect \- SAA-C01**  
   * Amazon Web Services (AWS) \- April 2019
 
-CITIZENSHIP / WORK PERMIT
+## CITIZENSHIP / WORK PERMIT
 
 * Australian Citizen  
 * NV1 Security Clearance (AGSVA)
